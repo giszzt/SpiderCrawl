@@ -10,19 +10,13 @@ import json
 import os
 import multiprocessing
 
-APP_ID="appPit6DCs05916"
-PRUDUCT_ID='p_5d9eb71212cbe_Ckzdcjsp'
-RESOURCE_ID='v_5e25c8938ef85_IipgJGGl'
+APP_ID="你的app id"
+PRUDUCT_ID='课程id'
+RESOURCE_ID='某一节课对应的id，可随便选一节'
 
 BASE_URL='https://{0}.h5.xiaoeknow.com'.format(APP_ID.lower())
 
-COOKIES = {
-    'sensorsdata2015jssdkcross': '^%^7B^%^22^%^24device_id^%^22^%^3A^%^2217805731f829a-095a84d23da0f2-5771133-1327104-17805731f831ae^%^22^%^7D',
-    'Hm_lvt_17bc0e24e08f56c0c13a512a76c458fb': '1615386886,1615473384',
-    'sa_jssdk_2015_apppit6dcs05916_h5_xiaoeknow_com': '^%^7B^%^22distinct_id^%^22^%^3A^%^22u_601d6a276a386_9ycLHbbW22^%^22^%^2C^%^22first_id^%^22^%^3A^%^2217805731f829a-095a84d23da0f2-5771133-1327104-17805731f831ae^%^22^%^2C^%^22props^%^22^%^3A^%^7B^%^22^%^24latest_traffic_source_type^%^22^%^3A^%^22^%^E7^%^9B^%^B4^%^E6^%^8E^%^A5^%^E6^%^B5^%^81^%^E9^%^87^%^8F^%^22^%^2C^%^22^%^24latest_search_keyword^%^22^%^3A^%^22^%^E6^%^9C^%^AA^%^E5^%^8F^%^96^%^E5^%^88^%^B0^%^E5^%^80^%^BC_^%^E7^%^9B^%^B4^%^E6^%^8E^%^A5^%^E6^%^89^%^93^%^E5^%^BC^%^80^%^22^%^2C^%^22^%^24latest_referrer^%^22^%^3A^%^22^%^22^%^7D^%^7D',
-    'ko_token': '73578fe237cd034ae76c35bd042f318f',
-    'dataUpJssdkCookie': '^{^\\^wxver^\\^:^\\^^\\^,^\\^net^\\^:^\\^^\\^,^\\^sid^\\^:^\\^^\\^^}',
-}
+COOKIES = {'从浏览器复制的cookie'}
 
 HEADERS = {
     'Connection': 'keep-alive',
@@ -76,8 +70,6 @@ def getBaseInfo(resource_id):
     :return: 返回课程名与对应视频的url
     '''
 
-    # HEADERS[
-    #     "Referer"] = "https://apppit6dcs05916.h5.xiaoeknow.com/v1/course/video/v_5e248ae02d88b_qcOkiiMV?type=2&pro_id=p_5d9eb71212cbe_Ckzdcjsp"
 
     postdata = {"type": "2",
                 "product_id": PRUDUCT_ID,
@@ -178,7 +170,7 @@ def downloadVideo(video_url,save_path):
 
 def main(lesson):
     #视频保存路径
-    save_space = "D:\学习资源\视频音频\临时"
+    save_space = "D:\\"
     resource_id=lesson['resource_id']
 
     if resource_id[0]!="i":
